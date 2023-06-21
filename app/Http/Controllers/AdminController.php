@@ -17,6 +17,16 @@ class AdminController extends Controller
         return view('admin.login');
     }
 
+    public function profile()
+    {
+        $data['user'] = Auth::user();
+        return view('admin.profile', $data);
+    }
+
+    public function profileUpdate()
+    {
+    }
+
     public function logout(Request $request)
     {
         Auth::guard('web')->logout();
