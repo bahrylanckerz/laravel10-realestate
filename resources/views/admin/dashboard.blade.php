@@ -1,4 +1,4 @@
-@extends('admin.template')
+@extends('admin.layouts.template')
 @section('content')
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
