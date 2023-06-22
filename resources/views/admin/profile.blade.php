@@ -70,6 +70,17 @@
                             <label for="address" class="form-label">Address</label>
                             <textarea id="address" name="address" class="form-control" autocomplete="off" rows="3">{{ old('address') ?: $user->address }}</textarea>
                         </div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Photo</label>
+                                    <input type="file" id="image" name="image" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-md-flex justify-content-md-center">
+                                <img id="image-preview" class="wd-70 rounded-circle mb-3" src="{{ asset('uploads/img/no_image.jpg') }}" alt="new-profile">
+                            </div>
+                        </div>
                         <button type="submit" class="btn btn-primary btn-icon-text">
                             <i class="btn-icon-prepend" data-feather="send"></i>
                             Submit
@@ -83,4 +94,15 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#image').change(function(e){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#image-preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });
+    </script>
 @endsection

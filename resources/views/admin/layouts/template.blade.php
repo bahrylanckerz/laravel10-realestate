@@ -27,6 +27,9 @@
         <!-- Layout styles -->  
         <link rel="stylesheet" href="{{ asset('backend/assets/css/demo2/style.css') }}">
         <!-- End layout styles -->
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <!-- END jQuery -->
     </head>
     <body>
         <div class="main-wrapper">
