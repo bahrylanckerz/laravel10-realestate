@@ -36,8 +36,10 @@ Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login
 Route::middleware('auth', 'role:admin')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
-    Route::put('/admin/profile', [AdminController::class, 'profileUpdate'])->name('admin.profile.update');
     Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+    Route::get('/admin/password/change', [AdminController::class, 'changePassword'])->name('admin.password.change');
+    Route::post('/admin/password/change', [AdminController::class, 'changePasswordStore'])->name('admin.password.change.store');
+    Route::put('/admin/profile', [AdminController::class, 'profileUpdate'])->name('admin.profile.update');
 });
 
 Route::middleware('auth', 'role:agent')->group(function () {
