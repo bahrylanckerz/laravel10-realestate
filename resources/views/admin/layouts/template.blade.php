@@ -19,6 +19,7 @@
         <!-- endinject -->
         <!-- Plugin css for this page -->
         <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('backend/assets/vendors/sweetalert2/sweetalert2.min.css') }}">
         <!-- End plugin css for this page -->
         <!-- inject:css -->
         <link rel="stylesheet" href="{{ asset('backend/assets/fonts/feather-font/css/iconfont.css') }}">
@@ -54,6 +55,7 @@
         <!-- Plugin js for this page -->
         <script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
         <script src="{{ asset('backend/assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/vendors/sweetalert2/sweetalert2.min.js') }}"></script>
         <!-- End plugin js for this page -->
         <!-- inject:js -->
         <script src="{{ asset('backend/assets/vendors/feather-icons/feather.min.js') }}"></script>
@@ -62,5 +64,49 @@
         <!-- Custom js for this page -->
         <script src="{{ asset('backend/assets/js/dashboard-dark.js') }}"></script>
         <!-- End custom js for this page -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                @if(Session::has('message'))
+                var type = "{{ Session::get('alert-type','info') }}"
+                switch(type){
+                    case 'info':
+                        Swal.fire({
+                            icon: 'info',
+                            title: 'Info',
+                            text: '{{ Session::get('message') }}',
+                            // timer: 3000
+                        });
+                    break;
+
+                    case 'success':
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: '{{ Session::get('message') }}',
+                            // timer: 3000
+                        });
+                    break;
+
+                    case 'warning':
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Warning',
+                            text: '{{ Session::get('message') }}',
+                            // timer: 3000
+                        });
+                    break;
+
+                    case 'error':
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: '{{ Session::get('message') }}',
+                            // timer: 3000
+                        });
+                    break; 
+                }
+                @endif 
+            });
+        </script>
     </body>
 </html>
