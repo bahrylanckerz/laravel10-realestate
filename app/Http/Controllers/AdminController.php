@@ -65,14 +65,29 @@ class AdminController extends Controller
     public function changePassword()
     {
         $data['user'] = Auth::user();
-        return view('admin.passwordChange', $data);
+        return view('admin.password_change', $data);
     }
 
     public function changePasswordStore(Request $request)
     {
+        $rules = [
+            'current_password' => 'required|min:8',
+            'new_password'     => 'required|min:8|confirmed',
+        ];
+        $request->validate($rules);
+
         $id = Auth::user()->id;
         $user = User::find($id);
-        $user->password = Hash::make($request->newPassword);
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            $notification = [
+                'alert-type' => 'error',
+                'message'    => 'Current password is wrong',
+            ];
+            return back()->with($notification);
+        }
+
+        $user->password = Hash::make($request->new_password);
 
         $user->save();
 

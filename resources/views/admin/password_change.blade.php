@@ -14,16 +14,25 @@
                     <form method="post" action="{{ route('admin.password.change.store') }}" class="forms-sample">
                         @csrf
                         <div class="mb-3">
-                            <label for="currentPassword" class="form-label">Current Password</label>
-                            <input type="password" id="currentPassword" name="currentPassword" class="form-control" autocomplete="off">
+                            <label for="current_password" class="form-label">Current Password</label>
+                            <input type="password" id="current_password" name="current_password" class="form-control @error('current_password') is-invalid @enderror" autocomplete="off">
+                            @error('current_password')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="newPassword" class="form-label">New Password</label>
-                            <input type="password" id="newPassword" name="newPassword" class="form-control" autocomplete="off">
+                            <label for="new_password" class="form-label">New Password</label>
+                            <input type="password" id="new_password" name="new_password" class="form-control @error('new_password') is-invalid @enderror" autocomplete="off">
+                            @error('new_password')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="confirmPassword" class="form-label">Confirm New Password</label>
-                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" autocomplete="off">
+                            <label for="new_password_confirmation" class="form-label">Confirm New Password</label>
+                            <input type="password" id="new_password_confirmation" name="new_password_confirmation" class="form-control @error('new_password_confirmation') is-invalid @enderror" autocomplete="off">
+                            @error('new_password_confirmation')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary btn-icon-text">
                             <i class="btn-icon-prepend" data-feather="send"></i>
