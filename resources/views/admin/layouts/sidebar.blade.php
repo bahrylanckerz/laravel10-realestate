@@ -20,6 +20,12 @@
             </li>
             <li class="nav-item nav-category">web apps</li>
             <li class="nav-item">
+                <a href="{{ route('admin.propertytype') }}" class="nav-link">
+                <i class="link-icon" data-feather="message-square"></i>
+                    <span class="link-title">Property Type</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
                 <i class="link-icon" data-feather="mail"></i>
                     <span class="link-title">Email</span>
@@ -38,12 +44,6 @@
                         </li>
                     </ul>
                 </div>
-            </li>
-            <li class="nav-item">
-                <a href="pages/apps/chat.html" class="nav-link">
-                <i class="link-icon" data-feather="message-square"></i>
-                    <span class="link-title">Chat</span>
-                </a>
             </li>
         </ul>
     </div>

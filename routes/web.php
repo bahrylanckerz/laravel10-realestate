@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,9 @@ Route::middleware('auth', 'role:admin')->group(function () {
     Route::get('/admin/password/change', [AdminController::class, 'changePassword'])->name('admin.password.change');
     Route::post('/admin/password/change', [AdminController::class, 'changePasswordStore'])->name('admin.password.change.store');
     Route::put('/admin/profile', [AdminController::class, 'profileUpdate'])->name('admin.profile.update');
+
+    Route::get('/admin/propertytype', [PropertyTypeController::class, 'index'])->name('admin.propertytype');
+    Route::post('/admin/propertytype', [PropertyTypeController::class, 'store'])->name('admin.propertytype.store');
 });
 
 Route::middleware('auth', 'role:agent')->group(function () {
