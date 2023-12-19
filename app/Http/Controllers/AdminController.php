@@ -71,8 +71,9 @@ class AdminController extends Controller
     public function changePasswordStore(Request $request)
     {
         $rules = [
-            'current_password' => 'required|min:8',
-            'new_password'     => 'required|min:8|confirmed',
+            'current_password'          => 'required|min:8',
+            'new_password'              => 'required|min:8|confirmed',
+            'new_password_confirmation' => 'required',
         ];
         $request->validate($rules);
 

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('property_types', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->string('name');
+            $table->string('type_name');
+            $table->string('type_icon')->nullable();
             $table->timestamps();
         });
     }

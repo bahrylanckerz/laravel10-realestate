@@ -4,7 +4,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item"><a href="#">Property Type</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Add Type</li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Type</li>
         </ol>
     </nav>
     <div class="row">
@@ -12,18 +12,19 @@
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">{{ $title }}</h6>
-                    <form method="post" action="{{ route('admin.propertytype.store') }}" class="forms-sample">
+                    <form method="post" action="{{ route('admin.propertytype.update') }}" class="forms-sample">
                         @csrf
+                        <input type="hidden" id="id" name="id" value="{{ $data->id }}">
                         <div class="mb-3">
                             <label for="type" class="form-label">Type</label>
-                            <input type="text" id="type" name="type" class="form-control @error('type') is-invalid @enderror" autocomplete="off" value="{{ old('type') }}">
+                            <input type="text" id="type" name="type" class="form-control @error('type') is-invalid @enderror" autocomplete="off" value="{{ old('type') ?: $data->type_name }}">
                             @error('type')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="icon" class="form-label">Icon</label>
-                            <input type="text" id="icon" name="icon" class="form-control @error('icon') is-invalid @enderror" autocomplete="off" value="{{ old('icon') }}">
+                            <input type="text" id="icon" name="icon" class="form-control @error('icon') is-invalid @enderror" autocomplete="off" value="{{ old('icon') ?: $data->type_icon }}">
                             @error('icon')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror

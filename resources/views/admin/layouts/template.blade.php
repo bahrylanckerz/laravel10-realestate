@@ -20,6 +20,7 @@
         <!-- Plugin css for this page -->
         <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
         <link rel="stylesheet" href="{{ asset('backend/assets/vendors/sweetalert2/sweetalert2.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css') }}">
         <!-- End plugin css for this page -->
         <!-- inject:css -->
         <link rel="stylesheet" href="{{ asset('backend/assets/fonts/feather-font/css/iconfont.css') }}">
@@ -56,6 +57,8 @@
         <script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
         <script src="{{ asset('backend/assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
         <script src="{{ asset('backend/assets/vendors/sweetalert2/sweetalert2.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
+        <script src="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js') }}"></script>
         <!-- End plugin js for this page -->
         <!-- inject:js -->
         <script src="{{ asset('backend/assets/vendors/feather-icons/feather.min.js') }}"></script>
@@ -64,6 +67,7 @@
         <!-- Custom js for this page -->
         <script src="{{ asset('backend/assets/js/dashboard-dark.js') }}"></script>
         <!-- End custom js for this page -->
+        @yield('customJs')
         <script type="text/javascript">
             $(document).ready(function(){
                 @if(Session::has('message'))
@@ -103,9 +107,9 @@
                             text: '{{ Session::get('message') }}',
                             // timer: 3000
                         });
-                    break; 
+                    break;
                 }
-                @endif 
+                @endif
             });
         </script>
     </body>

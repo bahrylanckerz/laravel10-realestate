@@ -42,8 +42,12 @@ Route::middleware('auth', 'role:admin')->group(function () {
     Route::post('/admin/password/change', [AdminController::class, 'changePasswordStore'])->name('admin.password.change.store');
     Route::put('/admin/profile', [AdminController::class, 'profileUpdate'])->name('admin.profile.update');
 
-    Route::get('/admin/propertytype', [PropertyTypeController::class, 'index'])->name('admin.propertytype');
-    Route::post('/admin/propertytype', [PropertyTypeController::class, 'store'])->name('admin.propertytype.store');
+    Route::get('/admin/propertytype/index', [PropertyTypeController::class, 'index'])->name('admin.propertytype');
+    Route::get('/admin/propertytype/create', [PropertyTypeController::class, 'create'])->name('admin.propertytype.create');
+    Route::post('/admin/propertytype/create', [PropertyTypeController::class, 'store'])->name('admin.propertytype.store');
+    Route::get('/admin/propertytype/edit/{id}', [PropertyTypeController::class, 'edit'])->name('admin.propertytype.edit');
+    Route::post('/admin/propertytype/update', [PropertyTypeController::class, 'update'])->name('admin.propertytype.update');
+    Route::get('/admin/propertytype/delete/{id}', [PropertyTypeController::class, 'delete'])->name('admin.propertytype.delete');
 });
 
 Route::middleware('auth', 'role:agent')->group(function () {
